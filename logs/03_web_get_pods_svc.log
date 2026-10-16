@@ -1,0 +1,30 @@
+$ kubectl get pods -o wide
+NAME           READY   STATUS    RESTARTS   AGE     IP            NODE                   NOMINATED NODE   READINESS GATES
+hello-world    1/1     Running   0          2m21s   10.1.144.90   vladspace-virtualbox   <none>           <none>
+netology-web   1/1     Running   0          8s      10.1.144.91   vladspace-virtualbox   <none>           <none>
+
+$ kubectl get svc netology-svc -o wide
+NAME           TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE   SELECTOR
+netology-svc   ClusterIP   10.152.183.41   <none>        80/TCP    8s    app=netology-web
+
+$ kubectl get endpointslices -l kubernetes.io/service-name=netology-svc
+NAME                 ADDRESSTYPE   PORTS   ENDPOINTS     AGE
+netology-svc-n6wvk   IPv4          8080    10.1.144.91   9s
+
+$ kubectl describe svc netology-svc
+Name:                     netology-svc
+Namespace:                default
+Labels:                   <none>
+Annotations:              <none>
+Selector:                 app=netology-web
+Type:                     ClusterIP
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       10.152.183.41
+IPs:                      10.152.183.41
+Port:                     http  80/TCP
+TargetPort:               8080/TCP
+Endpoints:                10.1.144.91:8080
+Session Affinity:         None
+Internal Traffic Policy:  Cluster
+Events:                   <none>

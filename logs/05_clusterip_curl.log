@@ -1,0 +1,7 @@
+$ kubectl get svc netology-svc -o jsonpath='{.spec.clusterIP}'
+10.152.183.41
+
+$ curl -s http://10.152.183.41:80/ | grep -E 'Hostname|client_address|request_uri'
+Hostname: netology-web
+	client_address=10.0.2.15
+	request_uri=http://10.152.183.41:8080/

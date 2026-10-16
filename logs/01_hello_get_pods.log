@@ -1,0 +1,7 @@
+$ kubectl apply -f manifests/hello-world-pod.yaml
+pod/hello-world unchanged
+
+$ kubectl get pods -o wide
+NAME           READY   STATUS    RESTARTS   AGE     IP            NODE                   NOMINATED NODE   READINESS GATES
+hello-world    1/1     Running   0          2m48s   10.1.144.90   vladspace-virtualbox   <none>           <none>
+netology-web   1/1     Running   0          35s     10.1.144.91   vladspace-virtualbox   <none>           <none>
